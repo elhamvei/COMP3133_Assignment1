@@ -6,21 +6,13 @@ var validateEmail = function(email) {
 };
 
 const userSchema = new mongoose.Schema({
-    userName: {
-        type: String,
-        maxlength: 100,
-        required: true,
-        index: {
-            unique: true
-        }
-    },
-    email: {
+    username: {
         type : String,
         required: true,
         index: {
             unique: true
         },
-        maxlength: 50,
+        maxlength: 100,
         validate: [validateEmail, 'Please fill a valid email address']       
     },
     password: {
@@ -29,4 +21,4 @@ const userSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model("user", userSchema);
+module.exports = mongoose.model("User", userSchema);

@@ -1,50 +1,37 @@
-const { buildSchema } = require("graphql")
+const { gql } = require('apollo-server-express');
 
-module.exports = buildSchema(`
+module.exports = gql`
 type Employee {
-    _id: ID!
-    first_name: String!
-    last_name: String!
-    email: String!
-    gender: String!
-    salary: Float!
-  }
+  id: ID!
+  first_name: String!
+  last_name: String!
+  email: String!
+}
 
-  input EmployeeInput {
-    first_name: String!
-    last_name: String!
-    email: String!
-    gender: String!
-    salary: Float!
-  }
+type User {
+  id: ID!
+  username: String!
+  password: String!
+}
 
-  type User {
-    _id: ID!
-    username: String!
-    email: String!
-    password: String!
-  }
+type AuthData {
+  userId: ID!
+  token: String!
+  tokenExpiration: Int!
+}
 
-  input UserInput {
-    username: String!
-    email: String!
-    password: String!
-  }
-  
-  type Query {
-    employees: [Employee!]
-    users: [User!]
-  }
-  
-  type Mutation {
-    createEmployee(employee:EmployeeInput): Employee
-    createUser(user:UserInput): User
-  }
-  
-  schema {
-    query: Query
-    mutation: Mutation
-  }
-  `)
+type Query {
+  employees: [Employee]
+  employee(id: ID!): Employee
+}
+
+type Mutation {
+  addEmployee(first_name: String!, last_name: String!, email: String!): Employee
+  updateEmployee(id: ID!, first_name: String, last_name: String, email: String): Employee
+  deleteEmployee(id: ID!): ID
+  login(username: String!, password: String!): AuthData
+  addUser(username: String!, password: String!): User
+}
+`;
 
 
