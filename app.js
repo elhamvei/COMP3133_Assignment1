@@ -36,13 +36,13 @@ app.use(cors())
 
 const server = new ApolloServer({ typeDefs, resolvers });
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 80;
 
 (async () => {
   await server.start();
   server.applyMiddleware({ app });
 
   app.listen({ port: port }, () =>
-    console.log(`Server ready at http://localhost:4000/graphql`)
+    console.log(`Server ready at http://localhost:80/graphql`)
   );
 })();
