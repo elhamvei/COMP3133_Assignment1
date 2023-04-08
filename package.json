@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "start": "node app.js",
+    "start": "node dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Elham Veisouei",
@@ -20,6 +19,7 @@
     "express": "^4.18.2",
     "graphql": "^16.6.0",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^6.9.0"
+    "mongoose": "^6.9.0",
+    "serverless-http": "^3.2.0"
   }
 }
